@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tutor_helper/calendar.dart';
 import 'package:tutor_helper/home.dart';
 
 void main() {
@@ -19,7 +18,8 @@ class _SchoolManagementState extends State<SchoolManagement> {
     const HomePage(),
     null,
     null,
-    const CalendarPage(),
+    null,
+    // const CalendarPage(),
     null,
   ];
   @override
@@ -31,8 +31,6 @@ class _SchoolManagementState extends State<SchoolManagement> {
             elevation: 0,
             backgroundColor: const Color(0xFFF0F0F0),
             unselectedItemColor: Colors.grey,
-            selectedItemColor: Colors.black,
-            selectedIconTheme: IconThemeData(color: Colors.blueGrey[600]),
             currentIndex: _selectedItemIndex,
             type: BottomNavigationBarType.fixed,
             onTap: (int index) {
@@ -43,7 +41,10 @@ class _SchoolManagementState extends State<SchoolManagement> {
             items: const [
               BottomNavigationBarItem(
                 title: Text(""),
-                icon: Icon(Icons.home),
+                icon: ImageIcon(
+                  AssetImage("assets/icons/home.png"),
+                  size: 25,
+                ),
               ),
               BottomNavigationBarItem(
                 title: Text(""),
@@ -52,11 +53,17 @@ class _SchoolManagementState extends State<SchoolManagement> {
               BottomNavigationBarItem(
                 // ignore: deprecated_member_use
                 title: Text(""),
-                icon: Icon(Icons.done),
+                icon: ImageIcon(
+                  AssetImage("assets/icons/createpost.png"),
+                  size: 23,
+                ),
               ),
               BottomNavigationBarItem(
                 title: Text(""),
-                icon: Icon(Icons.calendar_today),
+                icon: ImageIcon(
+                  AssetImage("assets/icons/calendar.png"),
+                  size: 23,
+                ),
               ),
               BottomNavigationBarItem(
                 title: Text(""),

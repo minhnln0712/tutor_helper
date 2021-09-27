@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -10,6 +12,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    initializeDateFormatting('vi', null);
+    final DateTime now = DateTime.now();
+    final String dateOfWeek = DateFormat('EEE').format(now);
+    final String date = DateFormat('d MMM').format(now);
+    final String userFullName = "Mingple";
+    final int numOfTodayClass = 3;
+    final int numOfTask = 6;
+
     return Stack(
       children: [
         Container(
@@ -29,15 +39,15 @@ class _HomePageState extends State<HomePage> {
               Container(
                 alignment: Alignment.centerRight,
                 child: RichText(
-                  text: const TextSpan(
-                      text: "Wed",
+                  text: TextSpan(
+                      text: "$dateOfWeek",
                       style: TextStyle(
                           color: Color(0XFF263064),
                           fontSize: 12,
                           fontWeight: FontWeight.w900),
                       children: [
                         TextSpan(
-                          text: " 10 Oct",
+                          text: " $date",
                           style: TextStyle(
                               color: Color(0XFF263064),
                               fontSize: 12,
@@ -77,9 +87,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
-                        "Hi Jackie",
+                        "Hi $userFullName",
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.w900,
@@ -125,7 +135,7 @@ class _HomePageState extends State<HomePage> {
             ),
             child: ListView(
               children: [
-                buildTitleRow("TODAY CLASSES", 3),
+                buildTitleRow("TODAY CLASSES", numOfTodayClass),
                 const SizedBox(
                   height: 20,
                 ),
@@ -134,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   height: 25,
                 ),
-                buildTitleRow("YOUR TASKS", 4),
+                buildTitleRow("YOUR TASKS", numOfTask),
                 const SizedBox(
                   height: 20,
                 ),
